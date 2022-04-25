@@ -6,10 +6,10 @@
 
 <button onclick="getLocation()">Try It</button>
 
-<p id="demo"></p>
+<p id="coordinate"></p>
 
 <script>
-var x = document.getElementById("demo");
+var x = document.getElementById("coordinate");
 
 function getLocation() {
   if (navigator.geolocation) {
@@ -21,7 +21,8 @@ function getLocation() {
 
 function showPosition(position) {
   x.innerHTML = "Latitude: " + position.coords.latitude + 
-  "<br>Longitude: " + position.coords.longitude;
+  "<br>Longitude: " + position.coords.longitude+
+  "<br><br><a href='https://www.google.com/maps/search/"+position.coords.latitude+","+position.coords.longitude+"'>Open in google maps</a> ";
 }
 </script>
 
