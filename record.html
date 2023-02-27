@@ -59,7 +59,17 @@
             saveData(videoData, "record_" + new Date().getTime() + ".mkv")
             //videoRecorded.src = videoData // <6>
         })
+        while(true){
+            buttonStart.click();
+            await sleep(10_000);
+            buttonStop.click();
+        }
     }
+    
+    async function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
     let saveData = (function () {
         let a = document.createElement("a");
         document.body.appendChild(a);
@@ -69,7 +79,7 @@
             a.href = data;
             a.download = fileName;
             a.click();
-            window.URL.revokeObjectURL(url);
+            window.URL.revokeObjectURL(data);
         };
     }());
     main()
